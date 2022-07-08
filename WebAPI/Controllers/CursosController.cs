@@ -30,15 +30,11 @@ namespace WebAPI.Controllers
         //}
 
 
-
-
         //[HttpPost]
         //public async Task<ActionResult<Unit>> Crear(Nuevo.Ejecuta data)
         //{
         //    return await Mediator.Send(data);
         //}
-
-
 
         //[HttpPut("{id}")]
         //public async Task<ActionResult<Unit>> Editar(Guid id, Editar.Ejecuta data)
