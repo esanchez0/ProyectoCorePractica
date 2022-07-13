@@ -43,7 +43,7 @@ namespace Aplicacion.Cursos
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
 
-                //Guid _cursoId = Guid.NewGuid();
+                Guid _cursoId = Guid.NewGuid();
                 //if (request.CursoId != null)
                 //{
                 //    _cursoId = request.CursoId ?? Guid.NewGuid();
@@ -51,7 +51,7 @@ namespace Aplicacion.Cursos
 
                 var curso = new Curso
                 {
-                    //CursoId = _cursoId,
+                    CursoId = _cursoId,
                     Titulo = request.Titulo,
                     Descripcion = request.Descripcion,
                     FechaPublicacion = request.FechaPublicacion,
@@ -60,18 +60,19 @@ namespace Aplicacion.Cursos
 
                 _context.Curso.Add(curso);
 
-                //if (request.ListaInstructor != null)
-                //{
-                //    foreach (var id in request.ListaInstructor)
-                //    {
-                //        var cursoInstructor = new CursoInstructor
-                //        {
-                //            CursoId = _cursoId,
-                //            InstructorId = id
-                //        };
-                //        _context.CursoInstructor.Add(cursoInstructor);
-                //    }
-                //}
+
+                if (request.ListaInstructor != null)
+                {
+                    foreach (var id in request.ListaInstructor)
+                    {
+                        var cursoInstructor = new CursoInstructor
+                        {
+                            CursoId = _cursoId,
+                            InstructorId = id
+                        };
+                        _context.CursoInstructor.Add(cursoInstructor);
+                    }
+                }
 
                 /*agregar logica para insertar un precio del curso*/
                 //var precioEntidad = new Precio

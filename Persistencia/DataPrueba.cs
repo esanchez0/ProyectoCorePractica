@@ -14,8 +14,8 @@ namespace Persistencia
         {
             if (!usuarioManager.Users.Any())
             {
-                var usuario = new Usuario { NombreCompleto = "Vaxi Drez", UserName = "vaxidrez", Email = "vaxi.drez@gmail.com" };
-                await usuarioManager.CreateAsync(usuario, "Password123$");
+                var usuario = new Usuario { NombreCompleto = "Eder Sanchez", UserName = "Eder.Sanchez", Email = "eder_unam_df@hotmail.com" };
+                await usuarioManager.CreateAsync(usuario, "Mysticodf86.");
             }
         }
     }

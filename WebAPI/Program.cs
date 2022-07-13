@@ -28,10 +28,11 @@ namespace WebAPI
 
                 try
                 {
-                    //var userManager = services.GetRequiredService<UserManager<Usuario>>();
+                    var userManager = services.GetRequiredService<UserManager<Usuario>>();
                     var context = services.GetRequiredService<CursosOnlineContext>();
                     context.Database.Migrate();
-                    //DataPrueba.InsertarData(context, userManager).Wait();
+                    //Inserta un usuario en caso de que no exista ninguno
+                    DataPrueba.InsertarData(context, userManager).Wait();
                 }
                 catch (Exception e)
                 {

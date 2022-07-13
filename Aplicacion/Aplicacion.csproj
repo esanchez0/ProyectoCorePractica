@@ -16,10 +16,8 @@
 
   <ItemGroup>
     <Folder Include="Comentarios\" />
-    <Folder Include="Contratos\" />
     <Folder Include="Documentos\" />
     <Folder Include="Instructores\" />
-    <Folder Include="Seguridad\" />
   </ItemGroup>
 
 </Project>
