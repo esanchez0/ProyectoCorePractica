@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
     {
 
         [HttpGet]      
-        public async Task<ActionResult<List<Curso>>> Get()
+        public async Task<ActionResult<List<CursoDto>>> Get()
         {
             return await Mediator.Send(new Consulta.ListaCursos());
         }
@@ -25,10 +25,10 @@ namespace WebAPI.Controllers
         //  http://localhost:41395/api/Cursos/{id}
         //  http://localhost:41395/api/Cursos/1
         [HttpGet("{id}")]
-        //public async Task<ActionResult<CursoDto>> Detalle(Guid id)
-        //{
-        //    return await Mediator.Send(new ConsultaId.CursoUnico { Id = id });
-        //}
+        public async Task<ActionResult<CursoDto>> Detalle(Guid id)
+        {
+            return await Mediator.Send(new ConsultaId.CursoUnico { Id = id });
+        }
 
 
         [HttpPost]

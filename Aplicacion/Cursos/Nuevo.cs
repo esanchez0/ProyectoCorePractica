@@ -14,7 +14,6 @@ namespace Aplicacion.Cursos
     {
         public class Ejecuta : IRequest
         {
-            public int CursoId { get; set; }
             public string Titulo { get; set; }
             public string Descripcion { get; set; }
             public DateTime? FechaPublicacion { get; set; }
@@ -75,15 +74,15 @@ namespace Aplicacion.Cursos
                 }
 
                 /*agregar logica para insertar un precio del curso*/
-                //var precioEntidad = new Precio
-                //{
-                //    CursoId = _cursoId,
-                //    PrecioActual = request.Precio,
-                //    Promocion = request.Promocion,
-                //    PrecioId = Guid.NewGuid()
-                //};
+                var precioEntidad = new Precio
+                {
+                    CursoId = _cursoId,
+                    PrecioActual = request.Precio,
+                    Promocion = request.Promocion,
+                    PrecioId = Guid.NewGuid()
+                };
 
-                //_context.Precio.Add(precioEntidad);
+                _context.Precio.Add(precioEntidad);
 
                 var valor = await _context.SaveChangesAsync();
                 if (valor > 0)

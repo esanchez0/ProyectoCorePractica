@@ -1,5 +1,6 @@
 using Aplicacion.Contratos;
 using Aplicacion.Cursos;
+using AutoMapper;
 using Dominio;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -20,6 +21,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Persistencia;
+using Persistencia.DapperConexion;
+using Persistencia.DapperConexion.Instructor;
+using Persistencia.DapperConexion.Paginacion;
 using Seguridad.TokenSeguridad;
 using System;
 using System.Collections.Generic;
@@ -46,6 +50,10 @@ namespace WebAPI
             services.AddDbContext<CursosOnlineContext>(opt => {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddOptions();
+            //Pasando la cadena de conexion para dapper
+            services.Configure<ConexionConfiguracion>(Configuration.GetSection("ConnectionStrings"));
 
             //Crea servicio para mediatR y poder usarlo en el proyecto, solo se hace una vez con cualquier clase
             services.AddMediatR(typeof(Consulta.Manejador).Assembly);
@@ -81,6 +89,14 @@ namespace WebAPI
             //Inyectando interfaz para generar token, para acceder a todos los metodos desde web api
             services.AddScoped<IJwtGenerador, JwtGenerador>();
             services.AddScoped<IUsuarioSesion, UsuarioSesion>();
+
+            //Inyectando automapper para que se pueda manejar en el proyecto api
+            services.AddAutoMapper(typeof(Consulta.Manejador));
+
+            //Inyectando la interfaz para trabajar con dapper
+            services.AddTransient<IFactoryConnection, FactoryConnection>();
+            services.AddScoped<IInstructor, InstructorRepositorio>();
+            //services.AddScoped<IPaginacion, PaginacionRepositorio>();
 
         }
 

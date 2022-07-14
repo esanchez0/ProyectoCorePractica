@@ -49,12 +49,9 @@ namespace Aplicacion.Cursos
                 var curso = await _context.Curso.FindAsync(request.Id);
                 if (curso == null)
                 {
-                    //throw new Exception("No se puede eliminar curso");
                     throw new ManejadorExcepcion(HttpStatusCode.NotFound, new { mensaje = "No se encontro el curso" });
                 }
                 _context.Remove(curso);
-
-
 
                 var resultado = await _context.SaveChangesAsync();
 

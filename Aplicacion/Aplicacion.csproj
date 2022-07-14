@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
@@ -12,12 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Persistencia\Persistencia.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Comentarios\" />
-    <Folder Include="Documentos\" />
-    <Folder Include="Instructores\" />
   </ItemGroup>
 
 </Project>
