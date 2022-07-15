@@ -69,6 +69,11 @@ namespace WebAPI
             //Configurando IdentityCore, Cuando se usa el identity se coloca esta parte
             var builder = services.AddIdentityCore<Usuario>();
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+
+            //Inyectando clase para poder crear roles
+            identityBuilder.AddRoles<IdentityRole>();
+            identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
+
             //Data y roles donde se encuentra la tabla de Usuario de identity
             identityBuilder.AddEntityFrameworkStores<CursosOnlineContext>();
             identityBuilder.AddSignInManager<SignInManager<Usuario>>();
