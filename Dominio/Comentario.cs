@@ -14,5 +14,7 @@ namespace Dominio
 
         public DateTime? FechaCreacion { get; set; }
         public Curso Curso { get; set; }
+
+        public DateTime? FechaCreacionTest { get; set; }
     }
 }
