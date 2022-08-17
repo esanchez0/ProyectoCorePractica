@@ -33,8 +33,8 @@ namespace Aplicacion.Seguridad
             {
                 var usuario = await _userManager.FindByNameAsync(_usuarioSesion.ObtenerUsuarioSesion());
 
-                //var resultadoRoles = await _userManager.GetRolesAsync(usuario);
-                //var listaRoles = new List<string>(resultadoRoles);
+                var resultadoRoles = await _userManager.GetRolesAsync(usuario);
+                var listaRoles = new List<string>(resultadoRoles);
 
                 //var imagenPerfil = await _context.Documento.Where(x => x.ObjetoReferencia == new System.Guid(usuario.Id)).FirstOrDefaultAsync();
                 //if (imagenPerfil != null)
@@ -50,7 +50,7 @@ namespace Aplicacion.Seguridad
                 {
                     NombreCompleto = usuario.NombreCompleto,
                     Username = usuario.UserName,
-                    Token = _jwtGenerador.CrearToken(usuario),//, listaRoles),
+                    Token = _jwtGenerador.CrearToken(usuario, listaRoles),
                     Email = usuario.Email
                     //ImagenPerfil = imagenCliente
                 };

@@ -11,19 +11,19 @@ namespace Seguridad.TokenSeguridad
 {
     public class JwtGenerador : IJwtGenerador
     {
-        public string CrearToken(Usuario usuario)//, List<string> roles)
+        public string CrearToken(Usuario usuario, List<string> roles)
         {
             var claims = new List<Claim>{
                 new Claim(JwtRegisteredClaimNames.NameId, usuario.UserName)
             };
 
-            //if (roles != null)
-            //{
-            //    foreach (var rol in roles)
-            //    {
-            //        claims.Add(new Claim(ClaimTypes.Role, rol));
-            //    }
-            //}
+            if (roles != null)
+            {
+                foreach (var rol in roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, rol));
+                }
+            }
 
 
             //Palabra secreta para generar el token

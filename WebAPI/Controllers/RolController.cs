@@ -34,5 +34,18 @@ namespace WebAPI.Controllers
         {
             return await Mediator.Send(parametros);
         }
+
+        [HttpPost("eliminarRoleUsuario")]
+        public async Task<ActionResult<Unit>> EliminarRoleUsuario(UsuarioRolEliminar.Ejecuta parametros)
+        {
+            return await Mediator.Send(parametros);
+        }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<List<string>>> ObtenerRolesPorUsuario(string username)
+        {
+            return await Mediator.Send(new ObtenerRolesPorUsuario.Ejecuta { Username = username });
+        }
+
     }
 }

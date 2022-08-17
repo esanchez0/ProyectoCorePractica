@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistencia", "Persistenci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{66613B8F-7F7B-47F4-80E9-D045D0260283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguridad", "Seguridad\Seguridad.csproj", "{184433BE-2F0F-4559-B449-5C4B5CF0A3C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seguridad", "Seguridad\Seguridad.csproj", "{184433BE-2F0F-4559-B449-5C4B5CF0A3C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEBcursos-online-app", "WEBcursos-online-app\WEBcursos-online-app.csproj", "{3FF13CF0-C8A5-48B7-9E10-0070FC3A1DA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{184433BE-2F0F-4559-B449-5C4B5CF0A3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{184433BE-2F0F-4559-B449-5C4B5CF0A3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{184433BE-2F0F-4559-B449-5C4B5CF0A3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF13CF0-C8A5-48B7-9E10-0070FC3A1DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF13CF0-C8A5-48B7-9E10-0070FC3A1DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF13CF0-C8A5-48B7-9E10-0070FC3A1DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF13CF0-C8A5-48B7-9E10-0070FC3A1DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
