@@ -2,9 +2,11 @@
 using Dominio;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,35 +38,35 @@ namespace Aplicacion.Seguridad
                 var resultadoRoles = await _userManager.GetRolesAsync(usuario);
                 var listaRoles = new List<string>(resultadoRoles);
 
-                //var imagenPerfil = await _context.Documento.Where(x => x.ObjetoReferencia == new System.Guid(usuario.Id)).FirstOrDefaultAsync();
-                //if (imagenPerfil != null)
-                //{
-                //    var imagenCliente = new ImagenGeneral
-                //    {
-                //        Data = Convert.ToBase64String(imagenPerfil.Contenido),
-                //        Extension = imagenPerfil.Extension,
-                //        Nombre = imagenPerfil.Nombre
-                //    };
-
-                return new UsuarioData
+                var imagenPerfil = await _context.Documento.Where(x => x.ObjetoReferencia == new Guid(usuario.Id)).FirstOrDefaultAsync();
+                if (imagenPerfil != null)
                 {
-                    NombreCompleto = usuario.NombreCompleto,
-                    Username = usuario.UserName,
-                    Token = _jwtGenerador.CrearToken(usuario, listaRoles),
-                    Email = usuario.Email
-                    //ImagenPerfil = imagenCliente
-                };
-                //}
-                //else
-                //{
-                //    return new UsuarioData
-                //    {
-                //        NombreCompleto = usuario.NombreCompleto,
-                //        Username = usuario.UserName,
-                //        Token = _jwtGenerador.CrearToken(usuario, listaRoles),
-                //        Email = usuario.Email
-                //    };
-                //}
+                    var imagenCliente = new ImagenGeneral
+                    {
+                        Data = Convert.ToBase64String(imagenPerfil.Contenido),
+                        Extension = imagenPerfil.Extension,
+                        Nombre = imagenPerfil.Nombre
+                    };
+
+                    return new UsuarioData
+                    {
+                        NombreCompleto = usuario.NombreCompleto,
+                        Username = usuario.UserName,
+                        Token = _jwtGenerador.CrearToken(usuario, listaRoles),
+                        Email = usuario.Email,
+                        ImagenPerfil = imagenCliente
+                    };
+                }
+                else
+                {
+                    return new UsuarioData
+                    {
+                        NombreCompleto = usuario.NombreCompleto,
+                        Username = usuario.UserName,
+                        Token = _jwtGenerador.CrearToken(usuario, listaRoles),
+                        Email = usuario.Email
+                    };
+                }
             }
         }
     }

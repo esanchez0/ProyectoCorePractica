@@ -14,6 +14,7 @@ namespace Aplicacion.Cursos
     {
         public class Ejecuta : IRequest
         {
+            public Guid? CursoId { get; set; }
             public string Titulo { get; set; }
             public string Descripcion { get; set; }
             public DateTime? FechaPublicacion { get; set; }
@@ -43,10 +44,10 @@ namespace Aplicacion.Cursos
             {
 
                 Guid _cursoId = Guid.NewGuid();
-                //if (request.CursoId != null)
-                //{
-                //    _cursoId = request.CursoId ?? Guid.NewGuid();
-                //}
+                if (request.CursoId != null)
+                {
+                    _cursoId = request.CursoId ?? Guid.NewGuid();
+                }
 
                 var curso = new Curso
                 {

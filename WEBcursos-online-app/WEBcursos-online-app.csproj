@@ -17,9 +17,23 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\components\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\components\**" />
+    <EmbeddedResource Remove="ClientApp\src\components\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\components\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\components\Counter.js" />
+    <None Remove="ClientApp\src\components\FetchData.js" />
+    <None Remove="ClientApp\src\components\Home.js" />
+    <None Remove="ClientApp\src\components\Layout.js" />
+    <None Remove="ClientApp\src\components\NavMenu.css" />
+    <None Remove="ClientApp\src\components\NavMenu.js" />
+    <None Remove="ClientApp\src\components\Perfil.js" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
